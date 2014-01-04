@@ -49,8 +49,8 @@ function add($member_id, $click ='add',$id_list=null){
 			echo"<tr>
 			  <input type='hidden' name='id[]' value='$row[0]' />
 			  <td><input type='text' name='provider[]' value='$row[2]' /></td>
-			  <td><input type='text' name='start_date[]' placeholder='YYYY-MM-DD' value='$row[3]' id='inputField'/></td>
-			  <td><input type='text' name='end_date[]' placeholder='YYYY-MM-DD' value='$row[4]' id='inputField'/></td>
+			  <td><input type='text' name='start_date[]' placeholder='YYYY-MM-DD' value='$row[3]'/></td>
+			  <td><input type='text' name='end_date[]' placeholder='YYYY-MM-DD' value='$row[4]' /></td>
 			  <td><input type='text' name='cpd_hours[]' value='$row[5]' /></td>
 			  <td><textarea name='description[]' cols='45' rows='1'  >$row[6]</textarea></td>
 			</tr>
@@ -66,8 +66,8 @@ function add($member_id, $click ='add',$id_list=null){
 	for ($i=0; $i<4; $i++){
 		echo"<tr>
      		 <td><input type='text' name='provider[]' /></td>
-     		 <td><input type='text' name='start_date[]' placeholder='YYYY-MM-DD' id='inputField'/></td>
-      		 <td><input type='text' name='end_date[]' placeholder='YYYY-MM-DD' id='inputField'/></td>
+     		 <td><input type='text' name='start_date[]' placeholder='YYYY-MM-DD' /></td>
+      		 <td><input type='text' name='end_date[]' placeholder='YYYY-MM-DD' /></td>
       		 <td><input type='text' name='cpd_hours[]' /></td>
       		 <td><textarea name='description[]' cols='45' rows='1'></textarea></td>
     		 </tr>";
@@ -144,9 +144,7 @@ function add($member_id, $click ='add',$id_list=null){
 					continue;
 				}// end if
 				
-				if($save == 'Save Add' || $save == 'Save'){
 				mysql_query("INSERT INTO cpd_details (member_id, provider_institution, start_date, end_date, cpd_hours, description) VALUES ('$member_id', '$provider_value', '$start_date_value', '$end_date_value', '$cpd_hours_value', '$description_value')");
-				}// end if
 				
 			}// end while
 			
@@ -200,17 +198,6 @@ function add($member_id, $click ='add',$id_list=null){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Members</title>
-<link rel="stylesheet" type="text/css" media="all" href="jsDatePick_ltr.min.css" />
-<script type="text/javascript" src="jsDatePick.min.1.3.js"></script>
-<script type="text/javascript">
-	window.onload = function(){
-		new JsDatePick({
-			useMode:2,
-			target:"inputField",
-			dateFormat:"%d-%M-%Y"
-		});
-	};
-</script>
 </head>
 <body>
 <?php
